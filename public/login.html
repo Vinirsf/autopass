@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPass - Login</title>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/src/assets/styles/colors.css">
+    <link rel="stylesheet" href="/src/assets/styles/login.css">
+    <link rel="icon" href="/src/assets/images/logo-autopass.png" type="image/png">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/index.html" class="back-button">←</a>
+            <img src="/src/assets/images/logo-autopass.png" alt="Logo AutoPass" class="logo">
+        </div>
+
+        <h1>Login</h1>
+        <div class="divider"></div>
+
+        <form id="login-form">
+            <input type="email" id="email" placeholder="E-mail ou Nome de Usuário" required>
+            <input type="password" id="password" placeholder="Senha" required>
+
+            <label class="toggle">
+                <input type="checkbox" id="show-password">
+                <span class="slider"></span>
+                Mostrar Senha
+            </label>
+
+            <div class="divider small"></div>
+
+            <button type="submit" class="btn-primary">Entrar</button>
+
+            <label class="toggle remember">
+                <input type="checkbox" id="remember-me">
+                <span class="slider"></span>
+                Lembre-se de mim
+            </label>
+        </form>
+
+        <p class="register-link">Ainda não possui uma conta? - <a href="/cadastro.html">Cadastre-se</a></p>
+    </div>
+
+    <script src="/src/scripts/login.js" type="module"></script>
+</body>
+
+</html>
