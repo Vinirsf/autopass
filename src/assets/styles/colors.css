@@ -5,15 +5,8 @@
     --dark-gray: #292f33;
     --electric-gray: #02131e;
 
-    --primary-color: var(--blue);
-    --secondary-color: var(--yellow);
-    --background-color: var(--electric-gray);
-    --text-color: var(--black);
-}
-
-body {
-    margin: 0;
-    font-family: sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    --primary-color: var(--yellow);
+    --secondary-color: var(--blue);
+    --background-color: var(--black);
+    --text-color: #ffffff;
 }
