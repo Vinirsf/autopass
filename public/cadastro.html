@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPass - Cadastro</title>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/src/assets/styles/colors.css">
+    <link rel="stylesheet" href="/src/assets/styles/cadastro.css">
+    <link rel="icon" href="/src/assets/images/logo-autopass.png" type="image/png">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/index.html" class="back-button">←</a>
+            <img src="/src/assets/images/logo-autopass.png" alt="Logo AutoPass" class="logo">
+        </div>
+
+        <h1>Crie sua conta</h1>
+        <div class="divider"></div>
+
+        <form id="register-form">
+            <input type="text" id="fullname" placeholder="Nome Completo" required>
+            <input type="email" id="email" placeholder="E-mail" required>
+            <input type="password" id="password" placeholder="Senha" required>
+
+            <div class="divider small"></div>
+
+            <button type="submit" class="btn-primary">Criar Conta</button>
+
+            <button type="button" class="btn-google">
+                <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo" />
+                Entrar com Google
+            </button>
+        </form>
+
+        <p class="login-link">Já possui uma conta? - <a href="/login.html">Fazer Login</a></p>
+    </div>
+
+    <script src="/src/scripts/cadastro.js" type="module"></script>
+</body>
+
+</html>
