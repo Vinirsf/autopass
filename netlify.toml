@@ -1,8 +1,11 @@
-[build]
-  publish = "public"
-  functions = "netlify/functions"
+[[redirects]]
+  from = "http://appautopass.com.br/*"
+  to = "https://appautopass.com.br/:splat"
+  status = 301
+  force = true
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  from = "https://www.appautopass.com.br/*"
+  to = "https://appautopass.com.br/:splat"
+  status = 301
+  force = true
