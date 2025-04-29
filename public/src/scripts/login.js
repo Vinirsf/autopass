@@ -28,3 +28,19 @@ form.addEventListener('submit', async (e) => {
     alert('Login realizado com sucesso!');
     window.location.href = '/inicio.html'; // Página após login (a criar ainda)
 });
+
+import { supabase } from './supabase.js';
+
+const googleBtn = document.getElementById('google-login');
+
+googleBtn.addEventListener('click', async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+    });
+
+    if (error) {
+        console.error('Erro ao fazer login com Google:', error.message);
+        alert('Erro ao fazer login com Google.');
+    }
+});
+

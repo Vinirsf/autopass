@@ -39,3 +39,18 @@ form.addEventListener('submit', async (e) => {
     alert('Conta criada com sucesso!');
     window.location.href = '/login.html';
 });
+
+import { supabase } from './supabase.js';
+
+const googleBtn = document.getElementById('google-login');
+
+googleBtn.addEventListener('click', async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+    });
+
+    if (error) {
+        console.error('Erro ao fazer login com Google:', error.message);
+        alert('Erro ao fazer login com Google.');
+    }
+});
