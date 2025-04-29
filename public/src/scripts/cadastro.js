@@ -9,26 +9,22 @@ form.addEventListener('submit', async (e) => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    // 1. Cria o usuário no Auth
-    const { data: signupData, error: signupError } = await supabase.auth.signUp({
-        email: email,
-        password: password
+    const { data, error } = await supabase.auth.signUp({
+        email,
+        password
     });
 
-    if (signupError) {
-        alert('Erro ao cadastrar: ' + signupError.message);
+    if (error) {
+        alert('Erro ao criar conta: ' + error.message);
         return;
     }
 
-    const user = signupData.user;
+    const userId = data?.user?.id;
 
-    if (user) {
-        // 2. Insere o nome completo na tabela users
+    if (userId) {
         const { error: insertError } = await supabase
             .from('users')
-            .insert([
-                { id: user.id, full_name: fullName }
-            ]);
+            .insert([{ id: userId, full_name: fullName }]);
 
         if (insertError) {
             alert('Erro ao salvar perfil: ' + insertError.message);
@@ -36,5 +32,7 @@ form.addEventListener('submit', async (e) => {
             alert('Conta criada com sucesso!');
             window.location.href = '/login.html';
         }
+    } else {
+        alert('Erro: usuário não criado corretamente.');
     }
 });
