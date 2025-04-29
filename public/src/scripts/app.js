@@ -9,6 +9,3 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
-
-// Lógica do app irá aqui
-document.getElementById('app').innerHTML = `<h1 style="color: var(--primary-color)">Bem-vindo ao AutoPass!</h1>`;

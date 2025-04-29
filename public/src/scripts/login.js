@@ -4,6 +4,7 @@ const form = document.getElementById('login-form');
 const showPassword = document.getElementById('show-password');
 const passwordField = document.getElementById('password');
 
+// Mostrar/ocultar senha
 showPassword.addEventListener('change', () => {
     passwordField.type = showPassword.checked ? 'text' : 'password';
 });
@@ -25,5 +26,5 @@ form.addEventListener('submit', async (e) => {
     }
 
     alert('Login realizado com sucesso!');
-    window.location.href = '/home.html'; // Você pode direcionar para o dashboard depois
+    window.location.href = '/home.html'; // Página após login (a criar ainda)
 });
