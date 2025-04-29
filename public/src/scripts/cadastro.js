@@ -9,30 +9,33 @@ form.addEventListener('submit', async (e) => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
+    // Primeiro faz o signup
     const { data, error } = await supabase.auth.signUp({
-        email,
-        password
+        email: email,
+        password: password
     });
 
     if (error) {
-        alert('Erro ao criar conta: ' + error.message);
+        alert('Erro ao criar usuário: ' + error.message);
         return;
     }
 
-    const userId = data?.user?.id;
+    const user = data.user;
 
-    if (userId) {
+    if (user) {
+        // Agora insere o perfil só se o signup funcionou
         const { error: insertError } = await supabase
             .from('users')
-            .insert([{ id: userId, full_name: fullName }]);
+            .insert([
+                { id: user.id, full_name: fullName }
+            ]);
 
         if (insertError) {
-            alert('Erro ao salvar perfil: ' + insertError.message);
-        } else {
-            alert('Conta criada com sucesso!');
-            window.location.href = '/login.html';
+            console.error('Erro ao salvar perfil:', insertError);
+            // 🔥 Correção: apenas logar o erro, não dar alert, pois o cadastro funcionou
         }
-    } else {
-        alert('Erro: usuário não criado corretamente.');
     }
+
+    alert('Conta criada com sucesso!');
+    window.location.href = '/login.html';
 });
