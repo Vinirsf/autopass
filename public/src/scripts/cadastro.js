@@ -9,25 +9,32 @@ form.addEventListener('submit', async (e) => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    const { data, error } = await supabase.auth.signUp({
+    // 1. Cria o usuário no Auth
+    const { data: signupData, error: signupError } = await supabase.auth.signUp({
         email: email,
         password: password
     });
 
-    if (error) {
-        alert('Erro ao cadastrar: ' + error.message);
+    if (signupError) {
+        alert('Erro ao cadastrar: ' + signupError.message);
         return;
     }
 
-    const user = data.user;
+    const user = signupData.user;
 
-    // Inserir no banco o nome completo
-    await supabase
-        .from('users')
-        .insert([
-            { id: user.id, full_name: fullName }
-        ]);
+    if (user) {
+        // 2. Insere o nome completo na tabela users
+        const { error: insertError } = await supabase
+            .from('users')
+            .insert([
+                { id: user.id, full_name: fullName }
+            ]);
 
-    alert('Conta criada com sucesso!');
-    window.location.href = '/login.html'; // Redireciona para o login
+        if (insertError) {
+            alert('Erro ao salvar perfil: ' + insertError.message);
+        } else {
+            alert('Conta criada com sucesso!');
+            window.location.href = '/login.html';
+        }
+    }
 });
