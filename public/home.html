@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoPass - Serviços</title>
+    <title>AutoPass - Bem-vindo</title>
 
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="/src/assets/styles/colors.css">
@@ -13,49 +13,24 @@
 </head>
 
 <body>
-    <div class="header">
-        <div class="user-info">
-            <img src="/src/assets/images/user-default.png" alt="Perfil" class="profile-pic">
-            <span>Olá, <span id="user-name">[Nome do Usuário]</span>.</span>
+    <div class="container">
+        <div class="logo">
+            <img src="/src/assets/images/logo-autopass.png" alt="AutoPass Logo">
         </div>
-        <img src="/src/assets/images/logo-autopass.png" alt="Logo" class="logo-small">
-    </div>
 
-    <div class="main">
-        <h2>Serviços</h2>
+        <h1>Bem-vindos a AutoPass</h1>
         <div class="divider"></div>
+        <p>Seu hub de cuidados automotivos na palma de sua mão.</p>
 
-        <div class="search-box">
-            <input type="text" placeholder="Buscar">
+        <div class="buttons">
+            <a href="/cadastro.html" class="btn-primary">Cadastre-se</a>
+            <a href="/login.html" class="btn-secondary">Login</a>
         </div>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="/src/assets/images/lavagem-icon.png" alt="Lavagem">
-                <p>Lavagem</p>
-            </div>
-            <div class="service-card">
-                <img src="/src/assets/images/estetica-icon.png" alt="Estética Automotiva">
-                <p>Estética Automotiva</p>
-            </div>
-            <div class="service-card">
-                <img src="/src/assets/images/borracharia-icon.png" alt="Borracharia">
-                <p>Borracharia</p>
-            </div>
-            <div class="service-card">
-                <img src="/src/assets/images/mecanica-icon.png" alt="Mecânica">
-                <p>Mecânica</p>
-            </div>
-        </div>
+        <footer>Todos os direitos reservados - AppAutoPass</footer>
     </div>
 
-    <div class="bottom-nav">
-        <a href="#"><img src="/src/assets/images/settings-icon.png" alt="Configurações"></a>
-        <a href="/home.html"><img src="/src/assets/images/home-icon.png" alt="Início"></a>
-        <a href="#" id="logout-btn"><img src="/src/assets/images/logout-icon.png" alt="Sair"></a>
-    </div>
-
-    <script src="/src/scripts/home.js" type="module"></script>
+    <script src="/src/scripts/app.js" type="module"></script>
 </body>
 
 </html>
