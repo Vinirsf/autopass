@@ -1,6 +1,8 @@
 import { supabase } from './supabase.js';
 
+// Cadastro por email e senha
 const form = document.getElementById('register-form');
+const googleBtn = document.getElementById('google-login');
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -9,7 +11,7 @@ form.addEventListener('submit', async (e) => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    // Primeiro faz o signup
+    // Cria o usuário no Supabase Auth
     const { data, error } = await supabase.auth.signUp({
         email: email,
         password: password
@@ -23,7 +25,7 @@ form.addEventListener('submit', async (e) => {
     const user = data.user;
 
     if (user) {
-        // Agora insere o perfil só se o signup funcionou
+        // Insere o nome completo na tabela users
         const { error: insertError } = await supabase
             .from('users')
             .insert([
@@ -32,7 +34,6 @@ form.addEventListener('submit', async (e) => {
 
         if (insertError) {
             console.error('Erro ao salvar perfil:', insertError);
-            // 🔥 Correção: apenas logar o erro, não dar alert, pois o cadastro funcionou
         }
     }
 
@@ -40,10 +41,7 @@ form.addEventListener('submit', async (e) => {
     window.location.href = '/login.html';
 });
 
-import { supabase } from './supabase.js';
-
-const googleBtn = document.getElementById('google-login');
-
+// Login com Google
 googleBtn.addEventListener('click', async () => {
     const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',

@@ -13,6 +13,9 @@ async function loadUser() {
 
         if (data && data.full_name) {
             document.getElementById('user-name').textContent = data.full_name;
+        } else {
+            // Se não tiver registro, mostra nome do Auth
+            document.getElementById('user-name').textContent = user.email.split('@')[0];
         }
     }
 }
