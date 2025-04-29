@@ -26,5 +26,5 @@ form.addEventListener('submit', async (e) => {
     }
 
     alert('Login realizado com sucesso!');
-    window.location.href = '/home.html'; // Página após login (a criar ainda)
+    window.location.href = '/inicio.html'; // Página após login (a criar ainda)
 });
