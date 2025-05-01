@@ -1,89 +1,71 @@
 body {
     margin: 0;
-    padding: 0;
-    background-color: #7a7f8c;
-    /* fundo cinza chumbo */
     font-family: 'Poppins', sans-serif;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+    background-color: var(--electric-gray);
+    color: white;
 }
 
-.header {
-    background: var(--yellow);
-    padding: 1rem;
+.top-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: var(--yellow);
+    padding: 1rem;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
 
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.profile-pic {
-    width: 40px;
+.logo {
     height: 40px;
-    border-radius: 50%;
-    background: white;
 }
 
-.logo-small {
-    width: 50px;
-}
-
-.main {
-    flex: 1;
-    padding: 1rem;
-    overflow-y: auto;
-}
-
-h2 {
-    margin: 0;
-    color: white;
-}
-
-.divider {
-    width: 50px;
-    height: 4px;
-    background: var(--yellow);
-    margin: 0.5rem 0 1rem 0;
-    border-radius: 2px;
-}
-
-.search-box {
-    margin-bottom: 1rem;
-}
-
-.search-box input {
-    width: 100%;
-    padding: 0.8rem;
-    border-radius: 20px;
-    border: none;
+.user-greeting span {
+    color: var(--black);
+    font-weight: bold;
     font-size: 1rem;
+}
+
+.banner {
+    text-align: center;
+    padding: 1rem;
+}
+
+.banner img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-top: 0.5rem;
+}
+
+.services-section {
+    padding: 1rem;
+}
+
+.services-section h2 {
+    margin-bottom: 1rem;
+    color: var(--yellow);
+    text-align: center;
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 1rem;
 }
 
 .service-card {
     background: white;
-    border-radius: 20px;
+    color: black;
     padding: 1rem;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s;
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 }
 
 .service-card img {
@@ -92,17 +74,31 @@ h2 {
     margin-bottom: 0.5rem;
 }
 
-.bottom-nav {
-    background: white;
-    padding: 0.8rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+.service-card p {
+    margin: 0;
+    font-weight: bold;
 }
 
-.bottom-nav img {
-    width: 30px;
-    height: 30px;
+.bottom-bar {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.footer-button {
+    display: inline-block;
+    background-color: var(--yellow);
+    color: var(--black);
+    font-weight: bold;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 25px;
+    margin: 0.5rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logout {
+    background-color: #ff5b5b;
+    color: white;
 }

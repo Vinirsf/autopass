@@ -2,39 +2,37 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoPass - Início</title>
-
-    <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" href="/src/assets/styles/colors.css">
-    <link rel="stylesheet" href="/src/assets/styles/inicio.css">
-    <link rel="icon" href="/src/assets/images/logo-autopass.png" type="image/png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoPass | Início</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/src/assets/styles/colors.css" />
+    <link rel="stylesheet" href="/src/assets/styles/inicio.css" />
 </head>
 
 <body>
-    <div class="header">
-        <div class="user-info">
-            <img src="/src/assets/images/user-default.png" alt="Perfil" class="profile-pic">
-            <span>Olá, <span id="user-name">Usuário</span>.</span>
+    <header class="top-header">
+        <img src="/src/assets/images/logo-autopass.png" alt="Logo AutoPass" class="logo">
+        <div class="user-greeting">
+            <span>Olá, <strong id="user-name">Usuário</strong> 👋</span>
         </div>
-        <img src="/src/assets/images/logo-autopass.png" alt="Logo" class="logo-small">
-    </div>
+    </header>
 
-    <div class="main">
-        <h2>Serviços</h2>
-        <div class="divider"></div>
-        <div class="search-box">
-            <input type="text" placeholder="Buscar serviços...">
-        </div>
+    <section class="banner">
+        <p>Bem-vindo ao AutoPass</p>
+        <img src="/src/assets/images/banner-car.png" alt="Banner">
+    </section>
+
+    <main class="services-section">
+        <h2>Serviços automotivos</h2>
         <div class="services-grid">
             <a href="/lavagem.html" class="service-card">
                 <img src="/src/assets/images/lavagem-icon.png" alt="Lavagem">
                 <p>Lavagem</p>
             </a>
             <a href="/estetica.html" class="service-card">
-                <img src="/src/assets/images/estetica-icon.png" alt="Estética Automotiva">
-                <p>Estética Automotiva</p>
+                <img src="/src/assets/images/estetica-icon.png" alt="Estética">
+                <p>Estética</p>
             </a>
             <a href="/borracharia.html" class="service-card">
                 <img src="/src/assets/images/borracharia-icon.png" alt="Borracharia">
@@ -45,13 +43,12 @@
                 <p>Mecânica</p>
             </a>
         </div>
-    </div>
+    </main>
 
-    <div class="bottom-nav">
-        <a href="#"><img src="/src/assets/images/settings-icon.png" alt="Configurações"></a>
-        <a href="/inicio.html"><img src="/src/assets/images/home-icon.png" alt="Início"></a>
-        <a href="#" id="logout-btn"><img src="/src/assets/images/logout-icon.png" alt="Sair"></a>
-    </div>
+    <footer class="bottom-bar">
+        <a href="/agendamentos.html" class="footer-button">📅 Ver meus agendamentos</a>
+        <button id="logout-btn" class="footer-button logout">🚪 Sair</button>
+    </footer>
 
     <script src="/src/scripts/inicio.js" type="module"></script>
 </body>
