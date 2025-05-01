@@ -12,10 +12,11 @@
 
 <body>
     <header class="page-header">
-        <button onclick="history.back()">⬅</button>
+        <button class="btn-voltar" onclick="history.back()">⬅</button>
         <span>Lavagem - Lava Rápido do João</span>
         <img src="/src/assets/images/logo-autopass.png" alt="Logo" class="logo-top" />
     </header>
+
 
     <main>
         <h2>Agendamento de Lavagem</h2>
@@ -25,10 +26,22 @@
 
         <section class="calendario">
             <h3 id="mes-atual"></h3>
+
+            <div class="dias-semana">
+                <div>Seg</div>
+                <div>Ter</div>
+                <div>Qua</div>
+                <div>Qui</div>
+                <div>Sex</div>
+                <div>Sáb</div>
+                <div>Dom</div>
+            </div>
+
             <div class="dias" id="dias-do-mes">
                 <!-- Dias serão gerados via JS -->
             </div>
         </section>
+
 
         <div class="horarios" id="horarios-disponiveis"></div>
 

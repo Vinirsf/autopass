@@ -27,7 +27,9 @@ function gerarCalendario() {
 
     diasContainer.innerHTML = '';
 
-    for (let i = 0; i < primeiroDia; i++) {
+    const offset = primeiroDia === 0 ? 6 : primeiroDia - 1;
+
+    for (let i = 0; i < offset; i++) {
         diasContainer.innerHTML += `<div class="dia vazio"></div>`;
     }
 
