@@ -11,11 +11,9 @@
 </head>
 
 <body>
-    <header class="app-header">
-        <div class="user-info">
-            <img src="/src/assets/images/user-default.png" alt="Usuário">
-            <span>Lavagem - Lava Rápido do João</span>
-        </div>
+    <header class="page-header">
+        <button onclick="history.back()">⬅</button>
+        <span>Lavagem - Lava Rápido do João</span>
         <img src="/src/assets/images/logo-autopass.png" alt="Logo" class="logo-top" />
     </header>
 
@@ -26,20 +24,16 @@
         </div>
 
         <div class="calendario" id="calendar-container">
-            <!-- Calendário simulado -->
             <h3>janeiro 2024</h3>
             <p>(Clique em uma data para ver os horários)</p>
             <div class="dias">
-                <!-- Exemplo estático -->
                 <button class="dia" data-dia="2024-01-10">10</button>
                 <button class="dia" data-dia="2024-01-11">11</button>
                 <button class="dia" data-dia="2024-01-12">12</button>
             </div>
         </div>
 
-        <div class="horarios" id="horarios-disponiveis">
-            <!-- Horários dinâmicos aqui -->
-        </div>
+        <div class="horarios" id="horarios-disponiveis"></div>
 
         <div class="resumo" id="resumo">
             Selecione uma data e horário.
@@ -47,12 +41,6 @@
 
         <button id="btn-confirmar" disabled>Confirmar Agendamento e seguir para pagamento</button>
     </main>
-
-    <footer class="footer-menu">
-        <img src="/src/assets/images/settings-icon.png" alt="Config" />
-        <img src="/src/assets/images/home-icon.png" alt="Home" />
-        <img src="/src/assets/images/logout-icon.png" alt="Sair" />
-    </footer>
 
     <script src="/src/scripts/agendar-servico.js" type="module"></script>
 </body>
