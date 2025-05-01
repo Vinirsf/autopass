@@ -10,6 +10,8 @@ const distanciaEl = document.getElementById('distancia');
 const listaServicos = document.getElementById('lista-servicos');
 const btnAgendar = document.getElementById('btn-agendar');
 
+let servicoSelecionado = null;
+
 async function carregarEstabelecimento() {
     const { data, error } = await supabase
         .from('lavagens')
@@ -25,12 +27,18 @@ async function carregarEstabelecimento() {
     nomeEl.textContent = data.nome;
     enderecoEl.textContent = `📍 ${data.endereco}`;
     notaEl.textContent = `Avaliação: ${data.nota ?? 'N/D'}`;
-    distanciaEl.style.display = 'none'; // Distância pode ser adicionada futuramente
+    distanciaEl.style.display = 'none';
 
-    if (data.servicos && data.servicos.length > 0) {
-        data.servicos.forEach(servico => {
+    if (data.servicos?.length) {
+        data.servicos.forEach((servico, index) => {
             const li = document.createElement('li');
-            li.textContent = `✔ ${servico.nome} - R$ ${servico.preco}`;
+            li.innerHTML = `<strong>${servico.nome}</strong> - R$ ${servico.preco}`;
+            li.style.cursor = 'pointer';
+            li.onclick = () => {
+                servicoSelecionado = servico;
+                btnAgendar.disabled = false;
+                btnAgendar.textContent = `Agendar ${servico.nome}`;
+            };
             listaServicos.appendChild(li);
         });
     } else {
@@ -38,7 +46,13 @@ async function carregarEstabelecimento() {
     }
 
     btnAgendar.onclick = () => {
-        alert('Função de agendamento em breve!');
+        if (!servicoSelecionado) return;
+        const params = new URLSearchParams({
+            id,
+            servico: servicoSelecionado.nome,
+            preco: servicoSelecionado.preco
+        }).toString();
+        window.location.href = `/agendar-servico.html?${params}`;
     };
 }
 
