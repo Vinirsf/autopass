@@ -1,8 +1,12 @@
+import { supabase } from './supabase.js';
+
 const diasContainer = document.getElementById('dias-do-mes');
 const mesAtualTitulo = document.getElementById('mes-atual');
 const horariosContainer = document.getElementById('horarios-disponiveis');
 const resumoEl = document.getElementById('resumo');
 const btnConfirmar = document.getElementById('btn-confirmar');
+
+const estabelecimentoId = new URLSearchParams(window.location.search).get('id');
 
 let selecionado = {
     data: null,
@@ -12,17 +16,72 @@ let selecionado = {
     servico: "Lavagem"
 };
 
-const horariosDisponiveis = ["10:00", "11:00", "13:00"];
+function formatarData(iso) {
+    const [ano, mes, dia] = iso.split("-");
+    return `${dia}/${mes}`;
+}
+
+function atualizarResumo() {
+    if (selecionado.data && selecionado.horario) {
+        resumoEl.innerHTML = `
+      <strong>Resumo:</strong><br/>
+      ${selecionado.servico} - ${formatarData(selecionado.data)} - ${selecionado.horario}<br/>
+      Modelo: ${selecionado.modelo}<br/>
+      Valor: <span class="preco">R$${selecionado.preco.toFixed(2)}</span>
+    `;
+        btnConfirmar.disabled = false;
+    } else {
+        resumoEl.textContent = "Selecione uma data e horário.";
+        btnConfirmar.disabled = true;
+    }
+}
+
+async function buscarHorariosDisponiveis(dataSelecionada) {
+    const { data, error } = await supabase
+        .from('disponibilidade')
+        .select('horario')
+        .eq('data', dataSelecionada)
+        .eq('disponivel', true)
+        .eq('estabelecimento_id', estabelecimentoId);
+
+    if (error) {
+        console.error("Erro ao buscar horários:", error.message);
+        return [];
+    }
+
+    return data.map(h => h.horario);
+}
+
+function renderHorarios(horarios) {
+    if (horarios.length === 0) {
+        horariosContainer.innerHTML = `<p>Sem horários disponíveis para esta data.</p>`;
+        return;
+    }
+
+    horariosContainer.innerHTML = `
+    <h4>Horários disponíveis:</h4>
+    <div class="horarios-lista">
+      ${horarios.map(h => `<button class="hora-btn" data-hora="${h}">${h}</button>`).join('')}
+    </div>
+  `;
+
+    document.querySelectorAll('.hora-btn').forEach(btn => {
+        btn.onclick = () => {
+            selecionado.horario = btn.dataset.hora;
+            atualizarResumo();
+        };
+    });
+}
 
 function gerarCalendario() {
     const hoje = new Date();
     const ano = hoje.getFullYear();
-    const mes = hoje.getMonth(); // 0-11
-    const primeiroDia = new Date(ano, mes, 1).getDay(); // 0-domingo
+    const mes = hoje.getMonth();
+    const primeiroDia = new Date(ano, mes, 1).getDay();
     const diasNoMes = new Date(ano, mes + 1, 0).getDate();
 
-    const nomesMes = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho',
-        'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+    const nomesMes = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+        'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
     mesAtualTitulo.textContent = `${nomesMes[mes]} ${ano}`;
 
     diasContainer.innerHTML = '';
@@ -41,10 +100,11 @@ function gerarCalendario() {
         diaBtn.textContent = d;
         diaBtn.dataset.dia = dataISO;
 
-        diaBtn.onclick = () => {
+        diaBtn.onclick = async () => {
             selecionado.data = dataISO;
             selecionado.horario = null;
-            renderHorarios();
+            const horarios = await buscarHorariosDisponiveis(dataISO);
+            renderHorarios(horarios);
             atualizarResumo();
         };
 
@@ -52,40 +112,37 @@ function gerarCalendario() {
     }
 }
 
-function renderHorarios() {
-    horariosContainer.innerHTML = `
-    <h4>Horários disponíveis:</h4>
-    <div class="horarios-lista">
-      ${horariosDisponiveis.map(h => `<button class="hora-btn" data-hora="${h}">${h}</button>`).join('')}
-    </div>
-  `;
+btnConfirmar.addEventListener('click', async () => {
+    const { data: session } = await supabase.auth.getSession();
+    const user = session?.session?.user;
 
-    document.querySelectorAll('.hora-btn').forEach(btn => {
-        btn.onclick = () => {
-            selecionado.horario = btn.dataset.hora;
-            atualizarResumo();
-        };
-    });
-}
-
-function atualizarResumo() {
-    if (selecionado.data && selecionado.horario) {
-        resumoEl.innerHTML = `
-      <strong>Resumo:</strong><br/>
-      ${selecionado.servico} - ${formatarData(selecionado.data)} - ${selecionado.horario}<br/>
-      Modelo: ${selecionado.modelo}<br/>
-      Valor: <span class="preco">R$${selecionado.preco.toFixed(2)}</span>
-    `;
-        btnConfirmar.disabled = false;
-    } else {
-        resumoEl.textContent = "Selecione uma data e horário.";
-        btnConfirmar.disabled = true;
+    if (!user) {
+        alert('Você precisa estar logado.');
+        return;
     }
-}
 
-function formatarData(iso) {
-    const [ano, mes, dia] = iso.split("-");
-    return `${dia}/${mes}`;
-}
+    const { error } = await supabase.from('agendamentos').insert([{
+        usuario_id: user.id,
+        estabelecimento_id: estabelecimentoId,
+        data: selecionado.data,
+        hora: selecionado.horario,
+        servico: selecionado.servico,
+        preco: selecionado.preco
+    }]);
+
+    if (!error) {
+        await supabase
+            .from('disponibilidade')
+            .update({ disponivel: false })
+            .eq('data', selecionado.data)
+            .eq('horario', selecionado.horario)
+            .eq('estabelecimento_id', estabelecimentoId);
+
+        alert('Agendamento confirmado!');
+        window.location.href = '/inicio.html';
+    } else {
+        alert('Erro ao agendar: ' + error.message);
+    }
+});
 
 gerarCalendario();
