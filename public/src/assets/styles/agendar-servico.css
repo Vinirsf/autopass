@@ -48,25 +48,29 @@ main {
     color: black;
     padding: 1rem;
     border-radius: 20px;
-    text-align: center;
     margin-bottom: 1rem;
 }
 
+#mes-atual {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
 .dias {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
 }
 
 .dia {
-    background: #edcd33;
-    color: black;
+    background-color: #edcd33;
     border: none;
-    padding: 0.5rem 1rem;
     border-radius: 10px;
-    cursor: pointer;
+    padding: 0.5rem;
     font-weight: bold;
+    cursor: pointer;
+    color: black;
 }
 
 .horarios {
@@ -129,4 +133,9 @@ main {
     border-bottom-right-radius: 20px;
     color: var(--black);
     font-weight: bold;
+}
+
+.dia.vazio {
+    background: transparent;
+    cursor: default;
 }

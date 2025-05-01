@@ -23,15 +23,12 @@
             <img src="/src/assets/images/lavagem-icon.png" alt="Lavagem" />
         </div>
 
-        <div class="calendario" id="calendar-container">
-            <h3>janeiro 2024</h3>
-            <p>(Clique em uma data para ver os horários)</p>
-            <div class="dias">
-                <button class="dia" data-dia="2024-01-10">10</button>
-                <button class="dia" data-dia="2024-01-11">11</button>
-                <button class="dia" data-dia="2024-01-12">12</button>
+        <section class="calendario">
+            <h3 id="mes-atual"></h3>
+            <div class="dias" id="dias-do-mes">
+                <!-- Dias serão gerados via JS -->
             </div>
-        </div>
+        </section>
 
         <div class="horarios" id="horarios-disponiveis"></div>
 
