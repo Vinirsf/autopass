@@ -102,3 +102,21 @@ body {
 .estabelecimento-card a:hover {
     background-color: #e6c827;
 }
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--yellow);
+    color: var(--black);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.page-header button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
