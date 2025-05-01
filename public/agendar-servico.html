@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agendar Serviço | AutoPass</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/src/assets/styles/colors.css" />
+    <link rel="stylesheet" href="/src/assets/styles/agendar-servico.css" />
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="user-info">
+            <img src="/src/assets/images/user-default.png" alt="Usuário">
+            <span>Lavagem - Lava Rápido do João</span>
+        </div>
+        <img src="/src/assets/images/logo-autopass.png" alt="Logo" class="logo-top" />
+    </header>
+
+    <main>
+        <h2>Agendamento de Lavagem</h2>
+        <div class="icon-servico">
+            <img src="/src/assets/images/lavagem-icon.png" alt="Lavagem" />
+        </div>
+
+        <div class="calendario" id="calendar-container">
+            <!-- Calendário simulado -->
+            <h3>janeiro 2024</h3>
+            <p>(Clique em uma data para ver os horários)</p>
+            <div class="dias">
+                <!-- Exemplo estático -->
+                <button class="dia" data-dia="2024-01-10">10</button>
+                <button class="dia" data-dia="2024-01-11">11</button>
+                <button class="dia" data-dia="2024-01-12">12</button>
+            </div>
+        </div>
+
+        <div class="horarios" id="horarios-disponiveis">
+            <!-- Horários dinâmicos aqui -->
+        </div>
+
+        <div class="resumo" id="resumo">
+            Selecione uma data e horário.
+        </div>
+
+        <button id="btn-confirmar" disabled>Confirmar Agendamento e seguir para pagamento</button>
+    </main>
+
+    <footer class="footer-menu">
+        <img src="/src/assets/images/settings-icon.png" alt="Config" />
+        <img src="/src/assets/images/home-icon.png" alt="Home" />
+        <img src="/src/assets/images/logout-icon.png" alt="Sair" />
+    </footer>
+
+    <script src="/src/scripts/agendar-servico.js" type="module"></script>
+</body>
+
+</html>
