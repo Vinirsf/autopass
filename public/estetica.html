@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estética Automotiva | AutoPass</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/src/assets/styles/colors.css" />
+    <link rel="stylesheet" href="/src/assets/styles/estetica.css" />
+</head>
+
+<body>
+    <header class="page-header">
+        <button onclick="history.back()">⬅</button>
+        <h1>Estética Automotiva</h1>
+    </header>
+
+    <section class="location-bar">
+        <button id="use-location">📍 Usar minha localização</button>
+        <input type="text" id="manual-location" placeholder="Ou digite um bairro/cidade" />
+    </section>
+
+    <section class="list-container" id="lista-estetica">
+        <!-- Lista dinâmica aqui -->
+    </section>
+
+    <script src="/src/scripts/estetica.js" type="module"></script>
+</body>
+
+</html>
