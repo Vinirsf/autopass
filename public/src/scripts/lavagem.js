@@ -36,10 +36,10 @@ async function fetchLavagensProximas(lat, lng) {
         const div = document.createElement('div');
         div.className = 'estabelecimento-card';
         div.innerHTML = `
-      <h3>${estabelecimento.nome}</h3>
-      <p>${estabelecimento.endereco}</p>
-      <p>Distância: ${(estabelecimento.distancia / 1000).toFixed(1)} km</p>
-      <a href="/servicos/detalhe.html?id=${estabelecimento.id}">Ver detalhes</a>
+    <h3>${estabelecimento.nome}</h3>
+    <p>${estabelecimento.endereco}</p>
+    <p>Distância: ${(estabelecimento.distancia / 1000).toFixed(1)} km</p>
+    <a href="/lavagem-detalhe.html?id=${estabelecimento.id}">Ver detalhes</a>
     `;
         listContainer.appendChild(div);
     });
