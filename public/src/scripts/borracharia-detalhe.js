@@ -38,7 +38,7 @@ async function carregarEstabelecimento() {
         listaServicos.innerHTML = '<li>Este local ainda não cadastrou serviços.</li>';
     }
 
-    btnAgendar.href = `/agendar-servico.html?id=${data.id}`;
+    btnAgendar.href = `/agendar-borracharia.html?id=${data.id}`;
 }
 
 carregarEstabelecimento();

@@ -37,7 +37,7 @@ async function carregarEstabelecimento() {
     }
 
     btnAgendar.onclick = () => {
-        window.location.href = `/agendar-servico.html?id=${data.id}`;
+        window.location.href = `/agendar-estetica.html?id=${data.id}`;
     };
 }
 

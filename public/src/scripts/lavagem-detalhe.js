@@ -52,7 +52,7 @@ async function carregarEstabelecimento() {
             servico: servicoSelecionado.nome,
             preco: servicoSelecionado.preco
         }).toString();
-        window.location.href = `/agendar-lavage.html?${params}`;
+        window.location.href = `/agendar-lavagem.html?${params}`;
     };
 }
 
