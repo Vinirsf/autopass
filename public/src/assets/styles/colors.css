@@ -4,4 +4,9 @@
     --black: #0b0e10;
     --dark-gray: #292f33;
     --electric-gray: #02131e;
+
+    --primary-color: var(--yellow);
+    --secondary-color: var(--blue);
+    --background-color: var(--black);
+    --text-color: #ffffff;
 }
