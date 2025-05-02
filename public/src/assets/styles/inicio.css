@@ -54,24 +54,23 @@ body {
 }
 
 .service-card {
-    background-color: var(--dark-gray);
-    color: white;
+    background: white;
+    color: black;
     padding: 1rem;
     border-radius: 15px;
     text-align: center;
     text-decoration: none;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-    transition: transform 0.2s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s;
 }
 
 .service-card:hover {
     transform: translateY(-4px);
-    background-color: var(--blue);
 }
 
 .service-card img {
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
     margin-bottom: 0.5rem;
 }
 
