@@ -1,0 +1,153 @@
+:root {
+    --yellow: #edcd33;
+    --blue: #0068a6;
+    --black: #0b0e10;
+    --dark-gray: #292f33;
+    --electric-gray: #02131e;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #7a7f8c;
+    color: white;
+}
+
+.page-header {
+    background: var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: var(--black);
+    font-weight: bold;
+}
+
+.page-header img.logo-top {
+    width: 40px;
+    height: 40px;
+}
+
+.page-header .btn-voltar {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--black);
+    padding: 0.3rem 0.8rem;
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+
+.page-header .btn-voltar:hover {
+    background-color: #fff4c2;
+}
+
+main {
+    padding: 1rem;
+}
+
+.icon-servico img {
+    width: 50px;
+    margin: 1rem 0;
+}
+
+.calendario {
+    background: white;
+    color: black;
+    padding: 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#mes-atual {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.dias-semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.4rem;
+}
+
+.dia {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 0.6rem 0;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.dia:hover {
+    background-color: #edcd33;
+    color: black;
+}
+
+.dia.vazio {
+    background: transparent;
+    border: none;
+    cursor: default;
+}
+
+.horarios {
+    margin-bottom: 1rem;
+}
+
+.horarios-lista {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.hora-btn {
+    background: #c3f4bc;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    color: black;
+    cursor: pointer;
+}
+
+.resumo {
+    background: var(--yellow);
+    color: black;
+    padding: 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.preco {
+    color: red;
+}
+
+#btn-confirmar {
+    background: #c3f4bc;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 1rem;
+    border-radius: 30px;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+}

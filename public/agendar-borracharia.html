@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agendar Borracharia | AutoPass</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/src/assets/styles/colors.css" />
+    <link rel="stylesheet" href="/src/assets/styles/agendar-borracharia.css" />
+</head>
+
+<body>
+    <header class="page-header">
+        <button class="btn-voltar" onclick="history.back()">⬅</button>
+        <span>Borracharia - AutoPass</span>
+        <img src="/src/assets/images/logo-autopass.png" alt="Logo" class="logo-top" />
+    </header>
+
+    <main>
+        <h2>Agendamento de Borracharia</h2>
+        <div class="icon-servico">
+            <img src="/src/assets/images/borracharia-icon.png" alt="Borracharia" />
+        </div>
+
+        <section class="calendario">
+            <h3 id="mes-atual"></h3>
+            <div class="dias-semana">
+                <div>Seg</div>
+                <div>Ter</div>
+                <div>Qua</div>
+                <div>Qui</div>
+                <div>Sex</div>
+                <div>Sáb</div>
+                <div>Dom</div>
+            </div>
+            <div class="dias" id="dias-do-mes"></div>
+        </section>
+
+        <div class="horarios" id="horarios-disponiveis"></div>
+
+        <div class="resumo" id="resumo">Selecione uma data e horário.</div>
+
+        <button id="btn-confirmar" disabled>Confirmar Agendamento</button>
+    </main>
+
+    <script src="/src/scripts/agendar-borracharia.js" type="module"></script>
+</body>
+
+</html>
