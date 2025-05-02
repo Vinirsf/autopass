@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estética Automotiva | AutoPass</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/src/assets/styles/colors.css" />
+    <link rel="stylesheet" href="/src/assets/styles/estetica-detalhe.css" />
+</head>
+
+<body>
+    <header class="page-header">
+        <button onclick="history.back()" class="btn-voltar">⬅</button>
+        <h1 id="nome">Estética Automotiva</h1>
+    </header>
+
+    <section class="info-container">
+        <p id="endereco">Endereço...</p>
+        <p id="nota">Avaliação: ⭐⭐⭐⭐☆</p>
+    </section>
+
+    <section class="servicos-oferecidos">
+        <h2>Serviços Disponíveis</h2>
+        <ul id="lista-servicos">
+            <!-- Preenchido dinamicamente -->
+        </ul>
+    </section>
+
+    <div class="botoes">
+        <button id="btn-agendar">Agendar Serviço</button>
+    </div>
+
+    <script src="/src/scripts/estetica-detalhe.js" type="module"></script>
+</body>
+
+</html>
