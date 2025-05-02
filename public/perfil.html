@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meu Perfil | AutoPass</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/src/assets/styles/colors.css" />
+    <link rel="stylesheet" href="/src/assets/styles/perfil.css" />
+</head>
+
+<body>
+    <header class="page-header">
+        <button onclick="history.back()">⬅</button>
+        <h1>Meu Perfil</h1>
+    </header>
+
+    <main class="perfil-container">
+        <div class="foto-wrapper">
+            <img src="/src/assets/images/user-default.png" alt="Avatar" id="foto-usuario">
+        </div>
+        <h2 id="nome-usuario">Nome do Usuário</h2>
+        <p id="email-usuario">email@email.com</p>
+
+        <button id="sair-btn" class="botao-sair">🚪 Sair</button>
+    </main>
+
+    <script src="/src/scripts/perfil.js" type="module"></script>
+</body>
+
+</html>
