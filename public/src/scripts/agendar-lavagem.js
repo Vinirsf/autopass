@@ -85,7 +85,6 @@ function gerarCalendario() {
     mesAtualTitulo.textContent = `${nomesMes[mes]} ${ano}`;
 
     diasContainer.innerHTML = '';
-
     const offset = primeiroDia === 0 ? 6 : primeiroDia - 1;
 
     for (let i = 0; i < offset; i++) {
