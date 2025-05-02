@@ -24,7 +24,7 @@ async function loadUser() {
 
 function setupActions() {
     const perfilBtn = document.getElementById('user-button');
-    const logoutBtn = document.getElementById('logout-btn');
+    const logoutBtn = document.getElementById('logoutBtn');
 
     if (perfilBtn) {
         perfilBtn.addEventListener('click', () => {
