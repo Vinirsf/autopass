@@ -37,13 +37,7 @@ async function carregarEstabelecimento() {
     }
 
     btnAgendar.onclick = () => {
-        if (!servicoSelecionado) return;
-        const params = new URLSearchParams({
-            id,
-            servico: servicoSelecionado.nome,
-            preco: servicoSelecionado.preco
-        }).toString();
-        window.location.href = `/agendar-mecanica.html?${params}`;
+        window.location.href = `/agendar-mecanica.html?id=${data.id}`;
     };
 }
 
