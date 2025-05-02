@@ -1,3 +1,11 @@
+:root {
+    --yellow: #edcd33;
+    --blue: #0068a6;
+    --black: #0b0e10;
+    --gray-dark: #292f33;
+    --electric-gray: #02131e;
+}
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -99,6 +107,6 @@ body {
 }
 
 .logout {
-    background-color: #ff5b5b;
+    background-color: #c0392b;
     color: white;
 }
