@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes da Borracharia | AutoPass</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/src/assets/styles/colors.css" />
+    <link rel="stylesheet" href="/src/assets/styles/borracharia-detalhe.css" />
+</head>
+
+<body>
+    <header class="page-header">
+        <button onclick="history.back()">⬅</button>
+        <h1 id="nome">Borracharia</h1>
+    </header>
+
+    <section class="info-container">
+        <p id="endereco">Endereço...</p>
+        <p id="nota">Avaliação: ⭐⭐⭐⭐☆</p>
+        <p id="distancia">Distância: 1,2 km</p>
+    </section>
+
+    <section class="servicos-oferecidos">
+        <h2>Serviços Disponíveis</h2>
+        <ul id="lista-servicos">
+            <!-- Preenchido via JS -->
+        </ul>
+    </section>
+
+    <div class="botoes">
+        <a id="btn-agendar" class="agendar-btn">Agendar Serviço</a>
+    </div>
+
+    <script src="/src/scripts/borracharia-detalhe.js" type="module"></script>
+</body>
+
+</html>
