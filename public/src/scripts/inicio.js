@@ -32,8 +32,8 @@ function setupActions() {
         });
     }
 
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', async () => {
+    if (logout-Btn) {
+        logout-Btn.addEventListener('click', async () => {
             await supabase.auth.signOut();
             window.location.href = '/login.html';
         });

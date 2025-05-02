@@ -1,7 +1,7 @@
 body {
-    margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #7a7f8c;
+    margin: 0;
+    background: #7a7f8c;
     color: white;
 }
 
@@ -17,54 +17,124 @@ body {
 }
 
 .page-header h1 {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
-.page-header button {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--black);
+.logo {
+    height: 35px;
 }
 
 .perfil-container {
+    padding: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.foto-perfil {
     text-align: center;
-    padding: 2rem 1rem;
+    margin: 1rem 0;
+    position: relative;
 }
 
-.foto-wrapper {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 1rem;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid var(--yellow);
+.foto-perfil label {
+    background: #444;
+    padding: 0.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: inline-block;
+    cursor: pointer;
 }
 
-.foto-wrapper img {
-    width: 100%;
-    height: 100%;
+.foto-perfil img {
+    margin-top: 0.5rem;
+    width: 110px;
+    height: 110px;
     object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--yellow);
 }
 
-#nome-usuario {
-    font-size: 1.5rem;
-    margin: 0.5rem 0;
+.input-grupo {
+    position: relative;
+    margin: 1rem 0;
 }
 
-#email-usuario {
-    font-size: 1rem;
-    color: #ccc;
-}
-
-.botao-sair {
-    margin-top: 2rem;
-    background-color: #ff5b5b;
-    color: white;
+.input-grupo input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 15px;
     border: none;
-    padding: 0.8rem 2rem;
-    border-radius: 30px;
+    background: #d9d9d9;
+    color: #222;
     font-size: 1rem;
+}
+
+.input-grupo .editar {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.toggle-grupo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #d9d9d9;
+    color: #000;
+    padding: 0.8rem;
+    border-radius: 15px;
+    margin: 1rem 0;
+}
+
+.codigo input {
+    background: #ccc;
+}
+
+.ajuda {
+    margin-top: 2rem;
+}
+
+.ajuda h3 {
+    margin-bottom: 0.5rem;
+}
+
+.ajuda button {
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    margin: 0.4rem 0;
+    background: #ccc;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.acoes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+#sair-btn {
+    background: white;
+    color: #000;
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.vermelho {
+    background: #c52d2d;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    border: none;
     cursor: pointer;
 }

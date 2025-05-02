@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meu Perfil | AutoPass</title>
+    <title>Informações da Conta | AutoPass</title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="stylesheet" href="/src/assets/styles/colors.css" />
     <link rel="stylesheet" href="/src/assets/styles/perfil.css" />
@@ -13,17 +13,64 @@
 <body>
     <header class="page-header">
         <button onclick="history.back()">⬅</button>
-        <h1>Meu Perfil</h1>
+        <h1>Informações da Conta</h1>
+        <img src="/src/assets/images/logo-autopass.png" alt="Logo" class="logo" />
     </header>
 
     <main class="perfil-container">
-        <div class="foto-wrapper">
-            <img src="/src/assets/images/user-default.png" alt="Avatar" id="foto-usuario">
+        <div class="foto-perfil">
+            <label for="input-foto">Alterar foto de perfil</label>
+            <input type="file" id="input-foto" hidden />
+            <img id="avatar-preview" src="/src/assets/images/user-default.png" alt="Foto de perfil" />
         </div>
-        <h2 id="nome-usuario">Nome do Usuário</h2>
-        <p id="email-usuario">email@email.com</p>
 
-        <button id="sair-btn" class="botao-sair">🚪 Sair</button>
+        <div class="input-grupo">
+            <input type="text" id="nome" placeholder="Nome completo" disabled />
+            <button class="editar" data-campo="nome">✏️</button>
+        </div>
+
+        <div class="input-grupo">
+            <input type="email" id="email" placeholder="Email" disabled />
+            <button class="editar" data-campo="email">✏️</button>
+        </div>
+
+        <div class="input-grupo">
+            <input type="password" id="senha" placeholder="Senha" disabled />
+            <button class="editar" data-campo="senha">✏️</button>
+        </div>
+
+        <div class="toggle-grupo">
+            <label for="localizacao">Permitir Localização:</label>
+            <input type="checkbox" id="localizacao" />
+        </div>
+
+        <div class="input-grupo">
+            <input type="text" id="endereco" placeholder="Endereço" disabled />
+            <button class="editar" data-campo="endereco">✏️</button>
+        </div>
+
+        <div class="input-grupo">
+            <input type="text" id="telefone" placeholder="Telefone" disabled />
+            <button class="editar" data-campo="telefone">✏️</button>
+        </div>
+
+        <div class="input-grupo codigo">
+            <label>Código de Reserva:</label>
+            <input type="text" id="codigo" disabled />
+        </div>
+
+        <section class="ajuda">
+            <h3>❓ Ajuda:</h3>
+            <button>Reembolsos</button>
+            <button>Políticas e Termos</button>
+            <button>Sobre a AutoPass</button>
+            <button>Minhas solicitações de ajuda</button>
+        </section>
+
+        <div class="acoes">
+            <button id="excluir-conta" class="vermelho">Excluir Conta</button>
+            <button id="sair-btn">Sair</button>
+        </div>
     </main>
 
     <script src="/src/scripts/perfil.js" type="module"></script>
