@@ -6,10 +6,12 @@
     --electric-gray: #02131e;
 }
 
+
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: var(--electric-gray);
+    background-color: #7a7f8c;
     color: white;
 }
 
