@@ -35,11 +35,11 @@ async function carregarAgendamentos() {
         const nomeEstabelecimento = item.lavagens?.nome || 'Estabelecimento';
 
         card.innerHTML = `
-      <h3>${item.servico}</h3>
-      <p><span>Local:</span> ${nomeEstabelecimento}</p>
-      <p><span>Data:</span> ${formatarData(item.data)}</p>
-      <p><span>Hora:</span> ${item.hora}</p>
-      <p><span>Valor:</span> R$${item.preco?.toFixed(2)}</p>
+    <h3>${item.servico}</h3>
+    <p><span>Local:</span> ${nomeEstabelecimento}</p>
+    <p><span>Data:</span> ${formatarData(item.data)}</p>
+    <p><span>Hora:</span> ${item.hora}</p>
+    <p><span>Valor:</span> R$${item.preco?.toFixed(2)}</p>
     `;
 
         listaEl.appendChild(card);
