@@ -121,25 +121,38 @@ function gerarCalendario() {
     }
 }
 
-btnConfirmar.addEventListener('click', () => {
+btnConfirmar.addEventListener('click', async () => {
     const url = `/pagamento.html?servico=${selecionado.servico}&data=${selecionado.data}&hora=${selecionado.horario}&preco=${selecionado.preco}`;
     window.location.href = url;
+
+    if (!user) {
+        alert('Você precisa estar logado.');
+        return;
+    }
+
+    const { error } = await supabase.from('agendamentos').insert([{
+        usuario_id: user.id,
+        estabelecimento_id: estabelecimentoId,
+        data: selecionado.data,
+        hora: selecionado.horario,
+        servico: selecionado.servico,
+        preco: selecionado.preco
+    }]);
+
+    if (!error) {
+        await supabase
+            .from('disponibilidade')
+            .update({ disponivel: false })
+            .eq('data', selecionado.data)
+            .eq('horario', selecionado.horario)
+            .eq('estabelecimento_id', estabelecimentoId);
+
+        alert('Agendamento confirmado!');
+        window.location.href = `/pagamento.html?servico=${selecionado.servico}&data=${selecionado.data}&hora=${selecionado.horario}&preco=${selecionado.preco}`;
+    } else {
+        alert('Erro ao agendar: ' + error.message);
+    }
 });
-
-
-if (!error) {
-    await supabase
-        .from('disponibilidade')
-        .update({ disponivel: false })
-        .eq('data', selecionado.data)
-        .eq('horario', selecionado.horario)
-        .eq('estabelecimento_id', estabelecimentoId);
-
-    alert('Agendamento confirmado!');
-    window.location.href = `/pagamento.html?servico=${selecionado.servico}&data=${selecionado.data}&hora=${selecionado.horario}&preco=${selecionado.preco}`;
-} else {
-    alert('Erro ao agendar: ' + error.message);
-}
 
 gerarCalendario();
 
