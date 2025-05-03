@@ -28,3 +28,11 @@ body {
     margin-bottom: 1rem;
     border-radius: 15px;
 }
+
+.page-header .btn-voltar {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--black);
+    cursor: pointer;
+}
