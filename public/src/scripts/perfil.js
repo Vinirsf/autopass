@@ -2,66 +2,64 @@ import { supabase } from './supabase.js';
 
 let userId = null;
 
-// Carrega dados do usuário
 async function carregarPerfil() {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    if (userError || !user) {
         window.location.href = '/login.html';
         return;
     }
 
     userId = user.id;
 
-    const { data, error } = await supabase
+    const { data: profile, error: profileError } = await supabase
         .from('users')
         .select('*')
         .eq('id', userId)
         .single();
 
-    if (data) {
-        document.getElementById('nome').value = data.full_name || '';
-        document.getElementById('email').value = user.email;
-        document.getElementById('endereco').value = data.endereco || '';
-        document.getElementById('telefone').value = data.telefone || '';
-        document.getElementById('codigo').value = data.codigo || '0000';
-        document.getElementById('localizacao').checked = data.localizacao ?? true;
-
-        if (data.avatar_url) {
-            document.getElementById('avatar-preview').src = data.avatar_url;
-        }
+    if (profileError) {
+        console.error('Erro ao carregar perfil:', profileError);
+        return;
     }
+
+    document.getElementById('nome').value = profile.full_name || '';
+    document.getElementById('email').value = user.email;
+    document.getElementById('endereco').value = profile.endereco || '';
+    document.getElementById('telefone').value = profile.telefone || '';
+    document.getElementById('codigo').value = profile.codigo || '0000';
+    document.getElementById('localizacao').checked = profile.localizacao ?? true;
+
+    const avatar = profile.avatar_url || '/src/assets/images/user-default.png';
+    document.getElementById('avatar-preview').src = avatar;
 }
 
-// Ativa edição do campo
-document.querySelectorAll('.editar').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const campo = document.getElementById(btn.dataset.campo);
-        campo.disabled = !campo.disabled;
+// Habilita e salva edição dos campos
+document.querySelectorAll('.editar').forEach(button => {
+    button.addEventListener('click', () => {
+        const campoId = button.dataset.campo;
+        const campo = document.getElementById(campoId);
+        campo.disabled = false;
+        campo.focus();
 
-        if (!campo.disabled) {
-            campo.focus();
+        campo.addEventListener('blur', async () => {
+            const valor = campo.value;
+            const coluna = campoId === 'nome' ? 'full_name' : campoId;
 
-            campo.addEventListener('blur', async () => {
-                const value = campo.value;
+            const { error } = await supabase
+                .from('users')
+                .update({ [coluna]: valor })
+                .eq('id', userId);
 
-                const updates = {};
-                updates[btn.dataset.campo === 'nome' ? 'full_name' : btn.dataset.campo] = value;
+            if (error) {
+                alert('Erro ao salvar campo: ' + coluna);
+            }
 
-                const { error } = await supabase
-                    .from('users')
-                    .update(updates)
-                    .eq('id', userId);
-
-                if (error) {
-                    alert('Erro ao salvar alteração.');
-                }
-                campo.disabled = true;
-            }, { once: true });
-        }
+            campo.disabled = true;
+        }, { once: true });
     });
 });
 
-// Atualiza permissão de localização
+// Permissão de localização
 document.getElementById('localizacao').addEventListener('change', async (e) => {
     await supabase
         .from('users')
@@ -69,18 +67,18 @@ document.getElementById('localizacao').addEventListener('change', async (e) => {
         .eq('id', userId);
 });
 
-// Upload de imagem de perfil
+// Upload de imagem
 document.getElementById('input-foto').addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
     const ext = file.name.split('.').pop();
-    const filePath = `avatars/${crypto.randomUUID()}.${ext}`;
+    const fileName = `${crypto.randomUUID()}.${ext}`;
+    const filePath = `avatars/${fileName}`;
 
-    const { error: uploadError } = await supabase
-        .storage
+    const { error: uploadError } = await supabase.storage
         .from('usuarios')
-        .upload(filePath, file, { upsert: true });
+        .upload(filePath, file);
 
     if (uploadError) {
         alert('Erro ao enviar imagem.');
@@ -89,28 +87,32 @@ document.getElementById('input-foto').addEventListener('change', async (e) => {
 
     const { data } = supabase.storage.from('usuarios').getPublicUrl(filePath);
 
-    await supabase
+    const { error } = await supabase
         .from('users')
         .update({ avatar_url: data.publicUrl })
         .eq('id', userId);
 
-    document.getElementById('avatar-preview').src = data.publicUrl;
+    if (!error) {
+        document.getElementById('avatar-preview').src = data.publicUrl;
+    }
 });
 
-// Logout
+// Botão sair
 document.getElementById('sair-btn').addEventListener('click', async () => {
     await supabase.auth.signOut();
     window.location.href = '/login.html';
 });
 
-// Exclusão de conta
+// Botão excluir conta
 document.getElementById('excluir-conta').addEventListener('click', async () => {
-    if (!confirm('Tem certeza que deseja excluir sua conta?')) return;
+    const confirmar = confirm('Tem certeza que deseja excluir sua conta?');
 
-    const { data: { user } } = await supabase.auth.getUser();
+    if (!confirmar) return;
 
-    await supabase.from('users').delete().eq('id', user.id);
-    alert('Conta excluída.');
+    await supabase.from('users').delete().eq('id', userId);
+    await supabase.auth.signOut();
+
+    alert('Conta excluída com sucesso.');
     window.location.href = '/';
 });
 
