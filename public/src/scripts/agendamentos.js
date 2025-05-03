@@ -37,6 +37,16 @@ async function carregarAgendamentos() {
 
 carregarAgendamentos();
 
+console.clear();
+console.log("Carregando agendamentos...");
+
+const container = document.getElementById('lista-agendamentos');
+if (!container) {
+    console.error("Elemento #lista-agendamentos não encontrado!");
+    return;
+}
+
+
 const { data, error } = await supabase
     .from('agendamentos')
     .select('*')
