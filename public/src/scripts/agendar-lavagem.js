@@ -45,12 +45,22 @@ async function buscarHorariosDisponiveis(dataSelecionada) {
         .eq('estabelecimento_id', estabelecimentoId);
 
     if (error) {
-        console.error("Erro ao buscar horários:", error.message);
-        return [];
+        console.warn("Erro ao buscar horários:", error.message);
+        return gerarHorariosPadrao();
     }
 
-    return data.map(h => h.horario);
+    return (data?.length > 0)
+        ? data.map(h => h.horario)
+        : gerarHorariosPadrao(); // fallback
 }
+
+function gerarHorariosPadrao() {
+    return [
+        "08:00", "09:00", "10:00", "11:00",
+        "13:00", "14:00", "15:00", "16:00", "17:00"
+    ];
+}
+
 
 function renderHorarios(horarios) {
     if (horarios.length === 0) {
@@ -138,10 +148,11 @@ btnConfirmar.addEventListener('click', async () => {
             .eq('estabelecimento_id', estabelecimentoId);
 
         alert('Agendamento confirmado!');
-        window.location.href = '/inicio.html';
+        window.location.href = `/pagamento.html?servico=${selecionado.servico}&data=${selecionado.data}&hora=${selecionado.horario}&preco=${selecionado.preco}`;
     } else {
         alert('Erro ao agendar: ' + error.message);
     }
 });
 
 gerarCalendario();
+
