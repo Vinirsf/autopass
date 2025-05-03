@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagamento | AutoPass</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/src/assets/styles/colors.css" />
+    <link rel="stylesheet" href="/src/assets/styles/pagamento.css" />
+</head>
+
+<body>
+    <header class="page-header">
+        <button class="btn-voltar" onclick="history.back()">⬅</button>
+        <h1>Pagamento</h1>
+        <img src="/src/assets/images/logo-autopass.png" alt="Logo" class="logo-top" />
+    </header>
+
+    <main>
+        <label for="cpf">CPF/CNPJ</label>
+        <input type="text" id="cpf" placeholder="CPF/CNPJ" maxlength="14" />
+        <small class="obs">Campo Obrigatório (Somente números)</small>
+
+        <h3>Forma de Pagamento</h3>
+
+        <div class="pagamento-opcoes">
+            <button class="btn-pagamento" data-metodo="credito">
+                <img src="/src/assets/images/credito-icon.png" alt="Crédito" />
+                Cartão de Crédito
+            </button>
+
+            <button class="btn-pagamento" data-metodo="debito">
+                <img src="/src/assets/images/debito-icon.png" alt="Débito" />
+                Cartão de Débito
+            </button>
+
+            <button class="btn-pagamento" data-metodo="pix">
+                <img src="/src/assets/images/pix-icon.png" alt="Pix" />
+                Pix
+            </button>
+        </div>
+
+        <button id="cancelar">Cancelar</button>
+    </main>
+
+    <footer class="footer">
+        <button onclick="window.location.href='/configuracoes.html'">⚙️</button>
+        <button onclick="window.location.href='/inicio.html'">🏠</button>
+        <button onclick="window.location.href='/login.html'">🔓</button>
+    </footer>
+
+    <script src="/src/scripts/pagamento.js" type="module"></script>
+</body>
+
+</html>
