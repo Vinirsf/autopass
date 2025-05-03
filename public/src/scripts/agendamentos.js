@@ -8,6 +8,7 @@ async function carregarAgendamentos() {
         return;
     }
 
+    // Obter sessão e usuário autenticado
     const { data: session, error: sessionError } = await supabase.auth.getSession();
     const user = session?.session?.user;
 
@@ -16,12 +17,16 @@ async function carregarAgendamentos() {
         return;
     }
 
+    console.log("🟡 Usuário logado:", user.id);
+
+    // Buscar agendamentos do usuário
     const { data, error } = await supabase
         .from('agendamentos')
         .select('*')
         .eq('usuario_id', user.id)
         .order('data', { ascending: false });
 
+    console.log("📦 Agendamentos recebidos:", data);
     if (error) {
         console.error('Erro ao buscar agendamentos:', error);
         container.innerHTML = '<p>Erro ao carregar agendamentos.</p>';
@@ -33,17 +38,15 @@ async function carregarAgendamentos() {
         return;
     }
 
+    // Renderizar lista
     container.innerHTML = data.map(item => `
     <div class="agendamento">
       <strong>${item.servico}</strong><br/>
       Data: ${item.data} às ${item.hora}<br/>
-      Valor: R$${item.preco.toFixed(2)}<br/>
-      Pagamento: 
-        ${item.pagamento?.metodo?.toUpperCase() || 'N/A'} 
-        (${item.pagamento?.status || 'pendente'})
+      Valor: R$${item.preco?.toFixed(2) || '0,00'}<br/>
+      Pagamento: ${item.pagamento?.metodo?.toUpperCase() || 'N/A'} (${item.pagamento?.status || 'pendente'})
     </div>
   `).join('');
 }
 
-// Inicia o carregamento ao abrir a tela
 carregarAgendamentos();
