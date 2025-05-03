@@ -1,6 +1,5 @@
 import { supabase } from './supabase.js';
 
-// Cadastro por email e senha
 const form = document.getElementById('register-form');
 const googleBtn = document.getElementById('google-login');
 
@@ -22,22 +21,23 @@ form.addEventListener('submit', async (e) => {
         return;
     }
 
-    const user = data.user;
+    const user = data?.user;
 
     if (user) {
-        // Insere o nome completo na tabela users
-        const { error: insertError } = await supabase
+        // Atualiza o nome completo na tabela 'users' (assumindo que a trigger já inseriu o usuário)
+        const { error: updateError } = await supabase
             .from('users')
-            .insert([
-                { id: user.id, full_name: fullName }
-            ]);
+            .update({ full_name: fullName })
+            .eq('id', user.id);
 
-        if (insertError) {
-            console.error('Erro ao salvar perfil:', insertError);
+        if (updateError) {
+            console.error('Erro ao atualizar perfil:', updateError);
+            alert('Usuário criado, mas houve um problema ao salvar o nome.');
+            return;
         }
     }
 
-    alert('Conta criada com sucesso!');
+    alert('Conta criada com sucesso! Verifique seu e-mail para ativar a conta.');
     window.location.href = '/login.html';
 });
 
