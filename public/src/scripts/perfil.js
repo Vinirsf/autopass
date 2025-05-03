@@ -28,12 +28,19 @@ async function carregarPerfil() {
     document.getElementById('telefone').value = profile.telefone || '';
     document.getElementById('codigo').value = profile.codigo || '0000';
     document.getElementById('localizacao').checked = profile.localizacao ?? true;
+    document.getElementById('senha').value = profile.senha ? profile.senha : '********';
 
     const avatar = profile.avatar_url || '/src/assets/images/user-default.png';
     document.getElementById('avatar-preview').src = avatar;
 }
 
-// Habilita e salva edição dos campos
+// Alternar exibição da senha
+document.getElementById('ver-senha').addEventListener('change', (e) => {
+    const senhaInput = document.getElementById('senha');
+    senhaInput.type = e.target.checked ? 'text' : 'password';
+});
+
+// Campos editáveis com botão de salvar automático
 document.querySelectorAll('.editar').forEach(button => {
     button.addEventListener('click', () => {
         const campoId = button.dataset.campo;
@@ -59,7 +66,7 @@ document.querySelectorAll('.editar').forEach(button => {
     });
 });
 
-// Permissão de localização
+// Localização
 document.getElementById('localizacao').addEventListener('change', async (e) => {
     await supabase
         .from('users')
@@ -67,7 +74,7 @@ document.getElementById('localizacao').addEventListener('change', async (e) => {
         .eq('id', userId);
 });
 
-// Upload de imagem
+// Upload de imagem de perfil
 document.getElementById('input-foto').addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if (!file) return;

@@ -1,140 +1,128 @@
 body {
+    background: #7a7f8c;
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background: #7a7f8c;
     color: white;
 }
 
 .page-header {
     background: var(--yellow);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    color: var(--black);
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+
+.btn-voltar {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
     color: var(--black);
-}
-
-.page-header h1 {
-    font-size: 1rem;
-}
-
-.logo {
-    height: 35px;
 }
 
 .perfil-container {
     padding: 1rem;
-    max-width: 500px;
-    margin: 0 auto;
 }
 
 .foto-perfil {
-    text-align: center;
-    margin: 1rem 0;
-    position: relative;
-}
-
-.foto-perfil label {
-    background: #444;
-    padding: 0.5rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    display: inline-block;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
 .foto-perfil img {
-    margin-top: 0.5rem;
-    width: 110px;
-    height: 110px;
-    object-fit: cover;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    border: 3px solid var(--yellow);
+    margin-top: 0.5rem;
 }
 
 .input-grupo {
-    position: relative;
-    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
 .input-grupo input {
-    width: 100%;
-    padding: 0.8rem;
-    border-radius: 15px;
+    flex: 1;
+    padding: 0.6rem;
+    border-radius: 10px;
     border: none;
-    background: #d9d9d9;
-    color: #222;
+    background: #ccc;
+    color: black;
     font-size: 1rem;
 }
 
-.input-grupo .editar {
-    position: absolute;
-    right: 10px;
-    top: 8px;
+.input-grupo button.editar {
     background: none;
     border: none;
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
     cursor: pointer;
-    font-size: 1rem;
+    color: #000;
 }
 
 .toggle-grupo {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #d9d9d9;
-    color: #000;
-    padding: 0.8rem;
-    border-radius: 15px;
     margin: 1rem 0;
 }
 
-.codigo input {
-    background: #ccc;
+#ver-senha {
+    margin-left: 0.5rem;
+}
+
+.separador {
+    border: none;
+    border-top: 4px solid var(--yellow);
+    margin: 1rem 0;
 }
 
 .ajuda {
-    margin-top: 2rem;
-}
-
-.ajuda h3 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .ajuda button {
     display: block;
     width: 100%;
-    padding: 0.6rem;
-    margin: 0.4rem 0;
-    background: #ccc;
-    color: #000;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    background: #e0e0e0;
+    color: black;
     border: none;
     border-radius: 10px;
+    font-weight: bold;
     text-align: left;
-    cursor: pointer;
 }
 
 .acoes {
     display: flex;
     justify-content: space-between;
-    margin-top: 2rem;
+    align-items: center;
 }
 
-#sair-btn {
-    background: white;
-    color: #000;
-    padding: 0.8rem 1.5rem;
-    border-radius: 20px;
+button.vermelho {
+    background: red;
+    color: white;
     border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 15px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.vermelho {
-    background: #c52d2d;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 20px;
+button.cinza {
+    background: #ddd;
+    color: black;
     border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 15px;
+    font-weight: bold;
     cursor: pointer;
 }

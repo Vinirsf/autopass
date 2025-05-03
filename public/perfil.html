@@ -5,16 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Informações da Conta | AutoPass</title>
-    <link rel="manifest" href="/manifest.json" />
     <link rel="stylesheet" href="/src/assets/styles/colors.css" />
     <link rel="stylesheet" href="/src/assets/styles/perfil.css" />
 </head>
 
 <body>
     <header class="page-header">
-        <button onclick="history.back()">⬅</button>
+        <button onclick="window.location.href='/inicio.html'" class="btn-voltar">⬅</button>
         <h1>Informações da Conta</h1>
-        <img src="/src/assets/images/logo-autopass.png" alt="Logo" class="logo" />
+        <img src="/src/assets/images/logo-autopass.png" alt="Logo" class="logo-top" />
     </header>
 
     <main class="perfil-container">
@@ -25,13 +24,20 @@
         </div>
 
         <div class="input-grupo">
-            <input type="text" id="nome" placeholder="Nome completo" disabled />
-            <button class="editar" data-campo="nome">✏️</button>
+            <input type="text" id="nome" disabled />
+            <button class="editar" data-campo="nome">✏</button>
         </div>
 
         <div class="input-grupo">
-            <input type="email" id="email" placeholder="Email" disabled />
+            <input type="email" id="email" disabled />
         </div>
+
+        <div class="input-grupo">
+            <input type="password" id="senha" disabled value="********" />
+            <label><input type="checkbox" id="ver-senha" /> Ver Senha</label>
+        </div>
+
+        <hr class="separador" />
 
         <div class="toggle-grupo">
             <label for="localizacao">Permitir Localização:</label>
@@ -39,31 +45,35 @@
         </div>
 
         <div class="input-grupo">
-            <input type="text" id="endereco" placeholder="Endereço" disabled />
-            <button class="editar" data-campo="endereco">✏️</button>
+            <input type="text" id="endereco" disabled />
+            <button class="editar" data-campo="endereco">✏</button>
         </div>
 
         <div class="input-grupo">
-            <input type="text" id="telefone" placeholder="Telefone" disabled />
-            <button class="editar" data-campo="telefone">✏️</button>
+            <input type="text" id="telefone" disabled />
+            <button class="editar" data-campo="telefone">✏</button>
         </div>
 
-        <div class="input-grupo codigo">
+        <div class="input-grupo">
             <label>Código de Reserva:</label>
             <input type="text" id="codigo" disabled />
         </div>
 
+        <hr class="separador" />
+
         <section class="ajuda">
             <h3>❓ Ajuda:</h3>
-            <button>Reembolsos</button>
-            <button>Políticas e Termos</button>
-            <button>Sobre a AutoPass</button>
-            <button>Minhas solicitações de ajuda</button>
+            <button>Reembolsos ></button>
+            <button>Políticas e Termos ></button>
+            <button>Sobre a AutoPass ></button>
+            <button>Minhas solicitações de ajuda ></button>
         </section>
+
+        <hr class="separador" />
 
         <div class="acoes">
             <button id="excluir-conta" class="vermelho">Excluir Conta</button>
-            <button id="sair-btn">Sair</button>
+            <button id="sair-btn" class="cinza">Sair</button>
         </div>
     </main>
 
