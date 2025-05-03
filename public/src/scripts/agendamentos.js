@@ -36,3 +36,11 @@ async function carregarAgendamentos() {
 }
 
 carregarAgendamentos();
+
+const { data, error } = await supabase
+    .from('agendamentos')
+    .select('*')
+    .eq('usuario_id', user.id)
+    .order('data', { ascending: false });
+
+console.log("Dados carregados:", data);
