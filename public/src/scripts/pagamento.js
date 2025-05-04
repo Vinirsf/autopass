@@ -14,10 +14,10 @@ botoesPagamento.forEach(btn => {
         const metodo = btn.dataset.metodo;
         const cpf = cpfInput.value.trim();
 
-        if (!validarDocumento(cpf)) {
-            alert("Digite um CPF ou CNPJ válido (somente números).");
-            return;
-        }
+//        if (!validarDocumento(cpf)) {
+//            alert("Digite um CPF ou CNPJ válido (somente números).");
+//            return;
+//        }
 
         const urlParams = new URLSearchParams(window.location.search);
         const servico = urlParams.get('servico');
