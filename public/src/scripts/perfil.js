@@ -110,6 +110,10 @@ document.getElementById('sair-btn').addEventListener('click', async () => {
     window.location.href = '/login.html';
 });
 
+document.getElementById('priv').addEventListener('click', async () => {
+    window.location.href = '/priv.html';
+});
+
 // Excluir conta
 document.getElementById('excluir-conta').addEventListener('click', async () => {
     const confirmar = confirm("Deseja mesmo excluir sua conta?");
@@ -122,3 +126,4 @@ document.getElementById('excluir-conta').addEventListener('click', async () => {
 });
 
 carregarPerfil();
+
