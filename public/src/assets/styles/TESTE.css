@@ -1,0 +1,122 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Varela Round", sans-serif;
+}
+
+body {
+  background: #1a1a1a;
+  color: white;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.component-5 {
+  background: #9195a1;
+  border-radius: 30px;
+  width: 100%;
+  max-width: 425px;
+  aspect-ratio: 9/16;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 10px 10px 30px rgba(255, 255, 255, 0.25);
+  padding: 1rem;
+}
+
+.header {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.ellipse-group {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.ellipse {
+  border-radius: 50%;
+  position: absolute;
+  background: #ceac29;
+}
+
+.ellipse-8 { width: 40px; height: 40px; top: 0; left: 0; }
+.ellipse-9 { width: 45px; height: 45px; top: -2px; left: -2px; }
+.ellipse-10 { width: 55px; height: 55px; border: 3px solid #d1b33f; top: -5px; left: -5px; }
+.ellipse-11 { width: 42px; height: 42px; background: #11100c; border: 1px solid black; top: 1px; left: 1px; }
+
+.logo {
+  width: 50px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.ol-nome-do-usuario {
+  margin-top: 4rem;
+  text-align: center;
+  font-size: 14px;
+}
+
+.servicos-title {
+  font-size: 24px;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  border: none;
+  margin-bottom: 1rem;
+}
+
+.servicos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-around;
+}
+
+.servico {
+  width: 45%;
+  background: #fff;
+  color: #121212;
+  border-radius: 15px;
+  padding: 0.5rem;
+  text-align: center;
+  box-shadow: inset 5px 5px 15px rgba(9, 8, 8, 0.25);
+}
+
+.servico img {
+  width: 60%;
+  height: auto;
+}
+
+.label {
+  margin-top: 0.5rem;
+  font-size: 14px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 1rem;
+  width: 90%;
+}
+
+.footer img {
+  width: 30px;
+  height: auto;
+}
