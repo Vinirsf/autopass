@@ -1,7 +1,7 @@
 {
     "name": "AutoPass",
     "short_name": "AutoPass",
-    "start_url": "/index.html",
+    "start_url": "https://appautopass.netlify.app",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#edcd33",
