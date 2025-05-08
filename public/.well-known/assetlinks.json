@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "app.netlify.appautopass.twa",
+            "sha256_cert_fingerprints": [
+                "75:81:F0:21:D0:CD:AA:1E:DE:17:D5:D3:7E:D3:06:E3:5D:84:8D:BB:86:41:5B:F0:8A:51:EE:5F:D5:B0:FD:82"
+            ]
+        }
+    }
+]
